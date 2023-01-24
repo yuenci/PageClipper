@@ -1,0 +1,7 @@
+.t-layout--with-sider {
+  height: calc(100vh - 74px);
+}
+
+.t-layout__sider {
+  width: auto !important;
+}
