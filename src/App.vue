@@ -19,6 +19,16 @@ function goToRoot() {
   router.push('/')
 }
 
+function themeToggle() {
+  console.log('themeToggle');
+  // if html tag has attribute theme-mode, remove it, else add it
+  if (document.documentElement.hasAttribute('theme-mode')) {
+    document.documentElement.removeAttribute('theme-mode');
+  } else {
+    document.documentElement.setAttribute('theme-mode', 'dark');
+  }
+}
+
 
 
 const collapsed = ref(true);
@@ -41,11 +51,11 @@ const changeHandler = (active) => {
     <t-header>
       <t-head-menu value="item1" height="120px">
         <template #logo>
-          <img width="136" class="logo" src="src\assets\logos\logo450×160.png" alt="logo" @click="goToRoot"
+          <img width="136" class="logo" src="src\assets\logos\logo450_160-nbg.png" alt="logo" @click="goToRoot"
             :style="{cursor:'pointer'}" />
         </template>
         <template #operations>
-          <a href="javascript:;"><t-icon class="t-menu__operations-icon" name="search" /></a>
+          <a href="javascript:;"><t-icon class="t-menu__operations-icon" name="tips" @click="themeToggle" /></a>
           <a href="javascript:;"><t-icon class="t-menu__operations-icon" name="notification-filled" /></a>
           <a href="javascript:;"><t-icon class="t-menu__operations-icon" name="home" /></a>
         </template>
@@ -63,7 +73,7 @@ const changeHandler = (active) => {
             </t-menu-item>
           </t-menu-group>
           <t-menu-group title="Form">
-            <t-submenu title="列表项" value="2-1">
+            <!-- <t-submenu title="列表项" value="2-1">
               <template #icon>
                 <t-icon name="server" />
               </template>
@@ -71,28 +81,28 @@ const changeHandler = (active) => {
               <t-menu-item value="2-1-2">卡片列表项</t-menu-item>
               <t-menu-item value="2-1-3">筛选列表项</t-menu-item>
               <t-menu-item value="2-1-4">树状筛选列表项</t-menu-item>
-            </t-submenu>
+            </t-submenu> -->
             <t-menu-item value="2-2">
-              <template #icon>
-                <t-icon name="edit-1" />
-              </template>
-              表单项
-            </t-menu-item>
-            <t-menu-item value="2-3">
               <template #icon>
                 <t-icon name="root-list" />
               </template>
-              详情页
+              Contacts
+            </t-menu-item>
+            <t-menu-item value="2-3">
+              <template #icon>
+                <t-icon name="code" />
+              </template>
+              Placement Code
             </t-menu-item>
             <t-menu-item value="2-4">
               <template #icon>
-                <t-icon name="check" />
+                <t-icon name="tools" />
               </template>
-              结果页
+              APIs
             </t-menu-item>
           </t-menu-group>
           <t-menu-group title="Email">
-            <t-submenu title="列表项" value="2-1">
+            <!-- <t-submenu title="列表项" value="2-1">
               <template #icon>
                 <t-icon name="server" />
               </template>
@@ -100,38 +110,38 @@ const changeHandler = (active) => {
               <t-menu-item value="2-1-2">卡片列表项</t-menu-item>
               <t-menu-item value="2-1-3">筛选列表项</t-menu-item>
               <t-menu-item value="2-1-4">树状筛选列表项</t-menu-item>
-            </t-submenu>
-            <t-menu-item value="2-2">
+            </t-submenu> -->
+            <t-menu-item value="3-2">
               <template #icon>
-                <t-icon name="edit-1" />
+                <t-icon name="server" />
               </template>
-              表单项
+              Services
             </t-menu-item>
-            <t-menu-item value="2-3">
+            <t-menu-item value="3-3">
               <template #icon>
-                <t-icon name="root-list" />
+                <t-icon name="queue" />
               </template>
-              详情页
+              Templates
             </t-menu-item>
-            <t-menu-item value="2-4">
+            <t-menu-item value="3-4">
               <template #icon>
-                <t-icon name="check" />
+                <t-icon name="history" />
               </template>
-              结果页
+              History
             </t-menu-item>
           </t-menu-group>
           <t-menu-group title="More">
             <t-menu-item value="item3">
               <template #icon>
-                <t-icon name="user" />
+                <t-icon name="setting" />
               </template>
-              个人页
+              Settings
             </t-menu-item>
             <t-menu-item value="item4">
               <template #icon>
-                <t-icon name="login" />
+                <t-icon name="user" />
               </template>
-              登录页
+              Profile
             </t-menu-item>
           </t-menu-group>
           <template #operations>
@@ -145,7 +155,12 @@ const changeHandler = (active) => {
         <t-content>
           <router-view />
         </t-content>
-        <t-footer>Copyright @ 2019-{{ new Date().getFullYear() }} Tencent. All Rights Reserved</t-footer>
+        <t-footer class="footer">
+          <a href="https://github.com/yuenci" target="_blank" class="footer-link">Copyright @ {{
+            new Date().getFullYear()
+          }} Yuenci. All
+            Rights Reserved</a>
+        </t-footer>
       </t-layout>
     </t-layout>
   </t-layout>
@@ -159,5 +174,16 @@ const changeHandler = (active) => {
   height: 60px;
   position: relative;
   bottom: 2px;
+}
+
+.footer {
+  text-align: center;
+  padding: 5px !important;
+}
+
+.footer-link {
+  color: #999;
+  font-size: 12px;
+  text-decoration: none;
 }
 </style>
